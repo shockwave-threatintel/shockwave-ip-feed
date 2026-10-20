@@ -4,6 +4,10 @@ Shockwave is a community-facing threat-intelligence project that provides a publ
 
 The feed is intended for security teams, network administrators and defensive security systems. It will also be used within our own security environment, subject to validation and operational testing.
 
+## Dashboard
+
+The initial read-only dashboard interface is available in [index.html](./index.html). It is a dashboard scaffold, not yet a live hosted website. It shows an unpublished state until an approved release-status file is provided.
+
 ## Inclusion policy
 
 Shockwave follows a conservative, high-confidence approach.
@@ -52,4 +56,4 @@ The project does not guarantee that every indicator is correct, current or suita
 
 ## Project status
 
-Shockwave is being prepared for public release. The feed should not be considered production-ready until its contents and publication process have been validated.
+The dashboard scaffold has been committed, but no public threat feed has been released. The feed should not be considered production-ready until its contents and publication process have been validated.
