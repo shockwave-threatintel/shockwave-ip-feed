@@ -80,7 +80,6 @@
 
   <footer>
     <span>Shockwave IP Threat Intelligence Feed</span>
-    <span><a href="https://github.com/shockwave-threatintel/shockwave-ip-feed">Repository</a> · <a href="https://github.com/shockwave-threatintel/shockwave-ip-feed/blob/main/README.md">Methodology and limitations</a></span>
   </footer>
 </main>
 <script>
@@ -91,7 +90,7 @@
     if (!response.ok) return;
     const data = await response.json();
     if (data.status !== "published") return;
-    document.getElementById("release-status").innerHTML = '<span class="dot" style="background:var(--accent)"></span><span>Approved release published</span>';
+    document.getElementById("release-status").innerHTML = '<span class="dot" style="background:var(--accent)"></span><span>Feed published</span>';
     document.getElementById("release-status").style.borderColor = "#35766f";
     document.getElementById("release-status").style.color = "var(--accent)";
     document.getElementById("ip-count").textContent = format(data.ip_count);
