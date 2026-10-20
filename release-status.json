@@ -1,10 +1,10 @@
 {
-  "status": "not_published",
-  "release_version": null,
-  "published_at": null,
-  "ip_count": null,
+  "status": "published",
+  "release_version": "1.0.0",
+  "published_at": "2026-10-20T11:33:39+00:00",
+  "ip_count": 613,
   "added_since_previous": null,
   "removed_since_previous": null,
-  "validation_summary": "Pending validation and explicit release approval",
-  "feed_url": null
+  "validation_summary": "613 unique IPv4 indicators; syntax and global routability validated. Individual maliciousness not independently confirmed.",
+  "feed_url": "https://shockwave-threatintel.github.io/shockwave-ip-feed/shockwave-ipv4.txt"
 }
