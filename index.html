@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Shockwave IP Threat Intelligence Feed — release status and validated public threat indicators.">
+  <title>Shockwave | IP Threat Intelligence</title>
+  <style>
+    :root { color-scheme: dark; --bg:#0a1018; --panel:#111b28; --line:#263548; --text:#edf4fc; --muted:#9aacc0; --accent:#65d6c4; --warn:#f2c879; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:radial-gradient(ellipse at top right,#142b3a 0,transparent 48%),var(--bg); color:var(--text); font:16px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    main { width:min(1050px,calc(100% - 32px)); margin:0 auto; padding:52px 0 36px; }
+    header { display:flex; align-items:center; gap:14px; margin-bottom:38px; }
+    .mark { display:grid; place-items:center; width:48px; height:48px; border:1px solid #35766f; border-radius:14px; color:var(--accent); font-weight:800; letter-spacing:-2px; }
+    .eyebrow { color:var(--accent); font-size:.76rem; font-weight:750; letter-spacing:.16em; text-transform:uppercase; }
+    h1 { margin:0; font-size:clamp(2rem,5vw,3.5rem); line-height:1.1; letter-spacing:-.045em; }
+    h2 { margin:0 0 8px; font-size:1.08rem; }
+    p { color:var(--muted); margin:.4rem 0 0; }
+    .hero { padding:32px; border:1px solid var(--line); border-radius:22px; background:linear-gradient(135deg,rgba(17,27,40,.96),rgba(13,24,35,.9)); }
+    .status { display:inline-flex; align-items:center; gap:9px; margin:20px 0 0; padding:7px 12px; border:1px solid #6e5830; border-radius:999px; color:var(--warn); font-size:.86rem; font-weight:700; }
+    .dot { width:8px; height:8px; border-radius:50%; background:var(--warn); }
+    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin:18px 0; }
+    .card { min-height:128px; padding:20px; border:1px solid var(--line); border-radius:16px; background:var(--panel); }
+    .value { margin-top:12px; font-size:1.8rem; font-weight:750; letter-spacing:-.03em; }
+    .label { color:var(--muted); font-size:.88rem; }
+    .sections { display:grid; grid-template-columns:1.1fr .9fr; gap:14px; margin-top:14px; }
+    .section { padding:24px; border:1px solid var(--line); border-radius:16px; background:rgba(17,27,40,.75); }
+    ul { margin:12px 0 0; padding-left:20px; color:var(--muted); }
+    li+li { margin-top:7px; }
+    a { color:var(--accent); text-underline-offset:3px; }
+    footer { display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; padding-top:28px; color:var(--muted); font-size:.85rem; }
+    .notice { font-size:.9rem; }
+    @media(max-width:700px) { main { padding-top:28px; } .hero { padding:23px; } .grid { grid-template-columns:1fr; } .card { min-height:unset; } .sections { grid-template-columns:1fr; } footer { display:block; } footer span { display:block; margin-top:6px; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="mark" aria-hidden="true">SW</div>
+    <div><div class="eyebrow">Community threat intelligence</div><div style="font-size:1.15rem;font-weight:750">SHOCKWAVE</div></div>
+  </header>
+
+  <section class="hero" aria-labelledby="page-title">
+    <div class="eyebrow">IP reputation feed</div>
+    <h1 id="page-title">Evidence over volume.</h1>
+    <p>High-confidence IP threat indicators for defensive security teams and network operators.</p>
+    <div class="status" id="release-status"><span class="dot"></span><span>Awaiting first approved public release</span></div>
+    <p class="notice" id="status-note">The public dashboard is being prepared. No threat feed is published from this page until its contents pass validation and receive explicit release approval.</p>
+  </section>
+
+  <section class="grid" aria-label="Latest release statistics">
+    <article class="card"><div class="label">Published IPs</div><div class="value" id="ip-count">—</div><p>Shown after an approved release</p></article>
+    <article class="card"><div class="label">Added since previous release</div><div class="value" id="added-count">—</div><p>Release-to-release change</p></article>
+    <article class="card"><div class="label">Removed since previous release</div><div class="value" id="removed-count">—</div><p>Release-to-release change</p></article>
+  </section>
+
+  <section class="sections">
+    <article class="section">
+      <h2>Release information</h2>
+      <p id="release-time">No approved public release yet.</p>
+      <p id="validation-state">Public release validation: pending.</p>
+      <p id="feed-link" style="margin-top:14px">The feed URL will appear here after publication.</p>
+    </article>
+    <article class="section">
+      <h2>How to use Shockwave</h2>
+      <ul>
+        <li>Review the methodology and limitations before use.</li>
+        <li>Validate indicators against your own environment.</li>
+        <li>Test in monitoring mode before enforcing blocks.</li>
+        <li>Monitor for false positives and maintain a rollback path.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="section" style="margin-top:14px">
+    <h2>Conservative by design</h2>
+    <p>Shockwave aims to include IP addresses only when credible threat intelligence or corroborating evidence supports a malicious association. An indicator is not proof that every connection involving that address is malicious. IPs may be reassigned, shared, or used by legitimate services; false positives remain possible.</p>
+  </section>
+
+  <footer>
+    <span>Shockwave IP Threat Intelligence Feed</span>
+    <span><a href="https://github.com/shockwave-threatintel/shockwave-ip-feed">Repository</a> · <a href="https://github.com/shockwave-threatintel/shockwave-ip-feed/blob/main/README.md">Methodology and limitations</a></span>
+  </footer>
+</main>
+<script>
+(async function () {
+  const format = value => Number.isInteger(value) && value >= 0 ? value.toLocaleString("en-US") : "—";
+  try {
+    const response = await fetch("./release-status.json", { cache: "no-store" });
+    if (!response.ok) return;
+    const data = await response.json();
+    if (data.status !== "published") return;
+    document.getElementById("release-status").innerHTML = '<span class="dot" style="background:var(--accent)"></span><span>Approved release published</span>';
+    document.getElementById("release-status").style.borderColor = "#35766f";
+    document.getElementById("release-status").style.color = "var(--accent)";
+    document.getElementById("ip-count").textContent = format(data.ip_count);
+    document.getElementById("added-count").textContent = format(data.added_since_previous);
+    document.getElementById("removed-count").textContent = format(data.removed_since_previous);
+    document.getElementById("release-time").textContent = data.published_at ? "Published: " + data.published_at : "Publication time not supplied.";
+    document.getElementById("validation-state").textContent = "Validation: " + (data.validation_summary || "Approved release recorded.");
+    if (typeof data.feed_url === "string" && data.feed_url.startsWith("https://")) {
+      const link = document.createElement("a");
+      link.href = data.feed_url;
+      link.textContent = "Download the plain-text IP feed";
+      link.rel = "noopener";
+      document.getElementById("feed-link").replaceChildren(link);
+    }
+    document.getElementById("status-note").textContent = "Statistics reflect the latest approved public release.";
+  } catch (_) {
+    // Keep the safe, unpublished default if release status is unavailable.
+  }
+})();
+</script>
+</body>
+</html>
