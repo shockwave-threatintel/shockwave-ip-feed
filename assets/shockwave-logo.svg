@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-labelledby="title desc">
+<title id="title">Shockwave IP Threat Intelligence</title>
+<desc id="desc">Electric blue globe ring crossed by a sharp signal waveform, above the Shockwave wordmark.</desc>
+<defs>
+  <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#16d9ff"/><stop offset="1" stop-color="#0874ff"/></linearGradient>
+  <filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="720" height="520" rx="28" fill="#0a1018"/>
+<circle cx="360" cy="202" r="142" fill="none" stroke="url(#blue)" stroke-width="8"/>
+<g fill="#536579" opacity=".55">
+<path d="M265 104l28-18 29 8 10 20-22 14-3 24-20 12-17-16-20-3-9-19z"/>
+<path d="M321 167l25 9 14 26-8 34-17 29-7 43-20-20-5-41-15-27 8-29z"/>
+<path d="M374 103l32-16 34 12 27 25-9 19-31-4-12 20-23-8-5-22-22-8z"/>
+<path d="M402 178l28-9 28 20 7 34-18 26-10 41-23 18-14-30 9-30-18-28z"/>
+</g>
+<path d="M52 202h210l15-1 13-18 15 42 22-78 22 132 26-224 28 224 23-132 22 78 15-42 14 18 15 1h214" fill="none" stroke="#0874ff" stroke-width="13" stroke-linejoin="round" opacity=".8" filter="url(#glow)"/>
+<path d="M52 202h210l15-1 13-18 15 42 22-78 22 132 26-224 28 224 23-132 22 78 15-42 14 18 15 1h214" fill="none" stroke="#f4fbff" stroke-width="5" stroke-linejoin="round"/>
+<text x="360" y="414" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="66" font-weight="800" letter-spacing="1"><tspan fill="#f4f8fc">SHOCK</tspan><tspan fill="#13bdf5">WAVE</tspan></text>
+<text x="360" y="455" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="19" letter-spacing="6" fill="#dbe8f5">IP THREAT INTELLIGENCE</text>
+<path d="M102 450h70M548 450h70" stroke="#13bdf5" stroke-width="3" stroke-linecap="round"/>
+</svg>
