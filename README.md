@@ -1,8 +1,8 @@
 # Shockwave IP Threat Intelligence Feed
 
-Shockwave is a community threat-intelligence project that aggregates publicly available IP indicators to support defensive security operations.
+Shockwave is a community threat-intelligence project providing IP indicators to support defensive security operations.
 
-The initial release is an **aggregated community blocklist** containing IPv4 addresses collected from multiple threat-intelligence sources. Inclusion in this feed does not mean that Shockwave has independently confirmed malicious activity for every address.
+The initial release candidate is a community IPv4 indicator feed derived from data published under terms permitting reuse. Inclusion does not mean that Shockwave has independently confirmed malicious activity for every address.
 
 ## Dashboard
 
@@ -13,22 +13,18 @@ https://shockwave-threatintel.github.io/shockwave-ip-feed/
 ## Initial feed
 
 - **Format:** Plain text, one IPv4 address per line.
-- **Initial candidate:** 16,484 unique public IPv4 addresses in the current release candidate.
-- **Duplicates:** Removed during aggregation.
-- **Address validation:** The current release candidate passed IPv4 format, uniqueness and public-address checks.
-- **Evidence level:** Aggregated source indicators; individual entries have not all been independently investigated or corroborated by Shockwave.
+- **Initial candidate:** 613 unique public IPv4 addresses in the current release candidate.
+- **Duplicates:** Removed during feed processing.
+- **Address validation:** The current candidate passed IPv4 format, uniqueness and public-address checks.
+- **Evidence level:** Community-reported indicators; individual entries have not all been independently investigated or corroborated by Shockwave.
 
-The candidate count is not a claim that every entry is currently malicious, nor does it measure the accuracy of the underlying sources.
+The candidate count is not a claim that every entry is currently malicious, nor does it measure the accuracy of the underlying indicators.
 
-## Sources and aggregation
+## Feed methodology and use
 
-Shockwave Threat Intelligence aggregates indicators from multiple threat-intelligence inputs into a consolidated IPv4 feed.
+The current release candidate uses a community threat-intelligence feed with a rolling time window. Shockwave validates IPv4 addresses, excludes non-global addresses and removes duplicates. These checks do not independently verify every indicator or guarantee that an address is currently malicious.
 
-The aggregation process validates IPv4 addresses, excludes non-global addresses and removes duplicates. These checks do not independently verify every indicator or guarantee that an address is currently malicious.
-
-The feed is intended to remain freely accessible and is not offered for resale. Consumers are responsible for assessing indicators before applying security controls and for ensuring their use of the feed is appropriate for their environment.
-
-To protect upstream relationships, source identities and source-specific information are not publicly disclosed.
+The feed is intended for defensive security use. Consumers should assess indicators in their own environments and consider monitoring or alerting before enforcing blocking rules. The feed is provided without a guarantee that every indicator is accurate or remains relevant. Consumers are responsible for checking the applicable terms before redistributing or using the data.
 
 ## Intended use
 

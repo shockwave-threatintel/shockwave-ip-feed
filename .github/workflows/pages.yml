@@ -30,10 +30,37 @@ jobs:
         uses: actions/configure-pages@v5
         with:
           enablement: true
+      - name: Stage approved public assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p _site
+          cp index.html release-status.json _site/
+
+          python3 - <<'PYTHON'
+          import json
+          import shutil
+          from pathlib import Path
+
+          status = json.loads(Path("release-status.json").read_text())
+          state = status.get("status")
+
+          if state == "not_published":
+              print("Unpublished release: raw feed excluded from Pages artifact.")
+          elif state == "published":
+              feed = Path("shockwave-ipv4.txt")
+              if not feed.is_file() or feed.stat().st_size == 0:
+                  raise SystemExit("Published status requires a non-empty feed.")
+              shutil.copy2(feed, Path("_site") / feed.name)
+              print("Approved published status: feed included in Pages artifact.")
+          else:
+              raise SystemExit(f"Invalid release status: {state!r}")
+          PYTHON
+
       - name: Upload static dashboard
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
 
   deploy:
     environment:
