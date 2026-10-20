@@ -1,59 +1,62 @@
 # Shockwave IP Threat Intelligence Feed
 
-Shockwave is a community-facing threat-intelligence project that provides a publicly accessible feed of IP addresses associated with malicious activity.
+Shockwave is a community threat-intelligence project that aggregates publicly available IP indicators to support defensive security operations.
 
-The feed is intended for security teams, network administrators and defensive security systems. It will also be used within our own security environment, subject to validation and operational testing.
+The initial release is an **aggregated community blocklist** containing IPv4 addresses collected from multiple threat-intelligence sources. Inclusion in this feed does not mean that Shockwave has independently confirmed malicious activity for every address.
 
 ## Dashboard
 
-The initial read-only dashboard interface is available in [index.html](./index.html). It is a dashboard scaffold, not yet a live hosted website. It shows an unpublished state until an approved release-status file is provided.
+The planned public dashboard will provide release information, feed statistics and access to the published feed once the initial release has been approved and deployed:
 
-## Inclusion policy
+https://shockwave-threatintel.github.io/shockwave-ip-feed/
 
-Shockwave follows a conservative, high-confidence approach.
+## Initial feed
 
-IP addresses are considered for inclusion when credible threat intelligence or corroborating evidence supports their association with malicious activity. Suspicious behaviour alone is not automatically sufficient.
+- **Format:** Plain text, one IPv4 address per line.
+- **Initial candidate:** 16,484 unique public IPv4 addresses in the current release candidate.
+- **Duplicates:** Removed during aggregation.
+- **Address validation:** The current release candidate passed IPv4 format, uniqueness and public-address checks.
+- **Evidence level:** Aggregated source indicators; individual entries have not all been independently investigated or corroborated by Shockwave.
 
-The project aims to:
+The candidate count is not a claim that every entry is currently malicious, nor does it measure the accuracy of the underlying sources.
 
-- Prioritise credible evidence over feed size.
-- Validate and deduplicate entries before publication.
-- Exclude private, reserved and otherwise unsuitable IP address ranges.
-- Review conflicting or insufficient evidence before inclusion.
-- Avoid presenting uncertain indicators as confirmed threats.
+## Sources and aggregation
 
-## Feed format
+Shockwave Threat Intelligence aggregates indicators from multiple threat-intelligence inputs into a consolidated IPv4 feed.
 
-The planned public feed will use a plain-text format containing one IPv4 address per line.
+The aggregation process validates IPv4 addresses, excludes non-global addresses and removes duplicates. These checks do not independently verify every indicator or guarantee that an address is currently malicious.
 
-- Duplicate entries will be removed.
-- Entries will be validated before release.
-- The public feed URL and update information will be documented once the publication process is finalised.
+The feed is intended to remain freely accessible and is not offered for resale. Consumers are responsible for assessing indicators before applying security controls and for ensuring their use of the feed is appropriate for their environment.
+
+To protect upstream relationships, source identities and source-specific information are not publicly disclosed.
 
 ## Intended use
 
-The feed may be used to support defensive security controls, including firewall policies, threat hunting, monitoring and security analysis.
+The feed is intended to support defensive security activities, including:
 
-Consumers should evaluate the feed against their own security requirements and operational context before deploying blocking rules.
+- Threat hunting and security analysis.
+- Firewall and network-security monitoring.
+- Security information and event management.
+- Carefully evaluated IP reputation controls.
 
-**An IP address appearing in Shockwave is an indicator for investigation or defensive action, not proof that every connection involving that address is malicious.**
+**Recommended deployment:** Begin in monitoring or alert-only mode. Evaluate the indicators against local traffic and trusted infrastructure before considering enforcement.
 
-IP addresses can be reassigned, shared by multiple services, or associated with legitimate infrastructure. False positives are possible.
+Do not deploy the feed as an unconditional block rule without testing. Monitor false positives, maintain an allowlist and provide a rollback procedure.
+
+## Limitations
+
+IP addresses are not permanent identities. They can be reassigned, shared by legitimate services, used by cloud infrastructure or associated with compromised systems without every connection being malicious.
+
+False positives and stale indicators are possible. Shockwave does not guarantee that every entry is accurate, current or suitable for automatic blocking.
+
+Consumers are responsible for evaluating the feed and monitoring the impact of controls that use it.
 
 ## Publication and maintenance
 
-Releases will be reviewed and published manually.
+Releases are reviewed before publication. The public release status and feed statistics are maintained separately from the feed-generation process.
 
-Before a release, the feed should undergo validation for address format, duplicates, unsuitable ranges and release integrity. Publication should occur only after the candidate feed has been reviewed and approved.
-
-The project will document its publication process and update information as these are established.
+The project should publish a new release only after the candidate has been validated, reviewed and approved. Release-to-release additions and removals should be reported when a previous public release exists and a comparison has been performed.
 
 ## Responsible use
 
-Shockwave is provided for defensive security and threat-intelligence purposes. Consumers are responsible for assessing the suitability of the feed for their environment and for monitoring the effects of any controls based on its contents.
-
-The project does not guarantee that every indicator is correct, current or suitable for automatic blocking.
-
-## Project status
-
-The dashboard scaffold has been committed, but no public threat feed has been released. The feed should not be considered production-ready until its contents and publication process have been validated.
+Shockwave is provided for defensive security and threat-intelligence purposes. Consumers are responsible for complying with applicable laws, source licensing and their own operational requirements.

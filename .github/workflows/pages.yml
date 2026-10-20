@@ -6,6 +6,8 @@ on:
     paths:
       - 'index.html'
       - 'release-status.json'
+      - 'shockwave-ipv4.txt'
+      - 'README.md'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
