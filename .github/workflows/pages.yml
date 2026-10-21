@@ -7,6 +7,7 @@ on:
       - 'index.html'
       - 'release-status.json'
       - 'shockwave-ipv4.txt'
+      - 'shockwave.txt'
       - 'README.md'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
@@ -48,7 +49,7 @@ jobs:
           if state == "not_published":
               print("Unpublished release: raw feed excluded from Pages artifact.")
           elif state == "published":
-              feed = Path("shockwave-ipv4.txt")
+              feed = Path("shockwave.txt")
               if not feed.is_file() or feed.stat().st_size == 0:
                   raise SystemExit("Published status requires a non-empty feed.")
               shutil.copy2(feed, Path("_site") / feed.name)
