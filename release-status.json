@@ -1,10 +1,11 @@
 {
   "status": "published",
-  "release_version": "1.0.0",
-  "published_at": "2026-10-20T11:33:39+00:00",
-  "ip_count": 613,
-  "added_since_previous": null,
-  "removed_since_previous": null,
-  "validation_summary": "613 unique IPv4 indicators; syntax and global routability validated. Individual maliciousness not independently confirmed.",
-  "feed_url": "https://shockwave-threatintel.github.io/shockwave-ip-feed/shockwave-ipv4.txt"
+  "release_version": "1.1.0",
+  "published_at": "2026-10-21T04:42:52+00:00",
+  "ip_count": 50107,
+  "added_since_previous": 50103,
+  "removed_since_previous": 609,
+  "validation_summary": "Unique globally routable IPv4 addresses; syntax and uniqueness validated. Community indicators; individual maliciousness not independently confirmed.",
+  "feed_url": "https://shockwave-threatintel.github.io/shockwave-ip-feed/shockwave.txt",
+  "feed_sha256": "468597f0d5ce0aa1999b9680811387709a0e77dfacf9496ab3798a9f1f9644cd"
 }
