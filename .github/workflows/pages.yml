@@ -8,6 +8,7 @@ on:
       - 'release-status.json'
       - 'shockwave-ipv4.txt'
       - 'shockwave.txt'
+      - 'shockwave-annotated-preview.txt'
       - 'README.md'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
@@ -37,6 +38,14 @@ jobs:
           set -euo pipefail
           mkdir -p _site
           cp index.html release-status.json _site/
+
+          # Publish the separately labelled annotated preview; never substitute it for shockwave.txt.
+          if [ -s shockwave-annotated-preview.txt ]; then
+            cp shockwave-annotated-preview.txt _site/
+            echo "Annotated preview included as a separate download."
+          else
+            echo "Annotated preview missing or empty; continuing without preview."
+          fi
 
           python3 - <<'PYTHON'
           import json
