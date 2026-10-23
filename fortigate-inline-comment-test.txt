@@ -1,0 +1,5 @@
+# Shockwave FortiGate inline-comment parser test ONLY
+# Do not attach this test feed to a blocking policy.
+43.160.204.7
+43.160.212.102 # Malicious / Malware
+43.160.228.114
