@@ -1,0 +1,9 @@
+# Shockwave VirusTotal evidence preview
+# PREVIEW ONLY - not approved for automatic blocking
+# Criteria: analysis <= 7 days old; >= 5 malicious detections
+# Counts represent provider classifications, not proof of current malicious activity
+43.160.212.102 # Candidate: 5 malicious, 5 suspicious
+45.156.128.158 # Candidate: 11 malicious, 4 suspicious
+200.138.46.201 # Candidate: 10 malicious, 3 suspicious
+8.216.4.64 # Candidate: 5 malicious, 5 suspicious
+83.235.16.111 # Candidate: 15 malicious, 3 suspicious
