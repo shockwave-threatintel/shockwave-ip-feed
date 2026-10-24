@@ -3,8 +3,8 @@
   "release_version": "1.2.0",
   "published_at": "2026-10-24T14:03:57+00:00",
   "ip_count": 71875,
-  "added_since_previous": 0,
-  "removed_since_previous": 0,
+  "added_since_previous": 37322,
+  "removed_since_previous": 15554,
   "validation_summary": "Unique globally routable IPv4 addresses; syntax, uniqueness and inline annotation format validated. Source-feed membership and VirusTotal classifications are evidence, not independent confirmation that every address is currently malicious. Review before enforcement.",
   "feed_url": "https://shockwave-threatintel.github.io/shockwave-ip-feed/shockwave.txt",
   "feed_sha256": "0c64c117272bcf65001c131133ee25ae657824243bcdec68a9cf1124e0302eb3"

@@ -39,13 +39,13 @@ The feed is intended to support defensive security activities, including:
 
 Do not deploy the feed as an unconditional block rule without testing. Monitor false positives, maintain an allowlist and provide a rollback procedure.
 
-## Limitations
+## Understand the limitations
 
-IP addresses are not permanent identities. They can be reassigned, shared by legitimate services, used by cloud infrastructure or associated with compromised systems without every connection being malicious.
+Shockwave combines indicators from third-party threat-intelligence sources with independent validation and reputation cross-checks. Best-effort verification is performed using available external intelligence and retained assessment evidence, with findings evaluated separately from release decisions.
 
-False positives and stale indicators are possible. Shockwave does not guarantee that every entry is accurate, current or suitable for automatic blocking.
+These checks improve the evidence available for each indicator, but they do not guarantee that every IP is malicious or that an address remains a threat at the time it is used. IP addresses can be reassigned, shared by legitimate services, or associated with compromised infrastructure. False positives and stale indicators remain possible.
 
-Consumers are responsible for evaluating the feed and monitoring the impact of controls that use it.
+Shockwave recommends monitoring or alert-only deployment first, followed by local validation and careful review before enforcement.
 
 ## Publication and maintenance
 
