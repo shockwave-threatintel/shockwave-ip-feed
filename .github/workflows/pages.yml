@@ -38,7 +38,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p _site
-          cp index.html release-status.json _site/
+          cp index.html release-status.json research-status.json _site/
 
           # Publish the separately labelled annotated preview; never substitute it for shockwave.txt.
           if [ -s shockwave-annotated-preview.txt ]; then
