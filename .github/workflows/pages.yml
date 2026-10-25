@@ -6,6 +6,7 @@ on:
     paths:
       - 'index.html'
       - 'release-status.json'
+      - 'research-status.json'
       - 'shockwave-ipv4.txt'
       - 'shockwave.txt'
       - 'shockwave-annotated-preview.txt'
