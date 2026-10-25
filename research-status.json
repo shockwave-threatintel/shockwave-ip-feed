@@ -1,9 +1,9 @@
 {
   "status": "completed",
   "batch_id": "vt-assessment-450-v4-20261025",
-  "completed_lookups": 450,
+  "completed_lookups": 514,
   "provider_findings": 41400,
   "assessment_disposition": "REVIEW_REQUIRED",
   "publication_eligible_records": 0,
-  "status_note": "450 completed reputation lookups in the latest batch. Results remain review-required and do not constitute publication approval."
+  "status_note": "Unique IPs with retained VirusTotal cross-check results across batches."
 }
