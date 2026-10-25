@@ -53,36 +53,41 @@ jobs:
           import shutil
           from pathlib import Path
 
-          # Sanitize only the public copy; keep source names in the private build input.
+          # Normalize and sanitize only the public copy of the annotated preview.
+          # The source file may contain literal backslash-n sequences from older builds.
           preview = Path("_site/shockwave-annotated-preview.txt")
           if preview.is_file():
-              lines = preview.read_text(encoding="utf-8").splitlines()
+              raw = preview.read_text(encoding="utf-8")
+              raw = raw.replace("\\\\n", "\\n").replace("\\r\\n", "\\n").replace("\\r", "\\n")
               cleaned = []
-              removed = 0
-              for line in lines:
-                  low = line.lower()
-                  pos = low.find("# sources:")
-                  if pos < 0:
-                      cleaned.append(line)
+              import re
+              for line in raw.splitlines():
+                  line = line.strip()
+                  if not line:
                       continue
-                  removed += 1
-                  prefix = line[:pos].rstrip()
-                  vt = low.find("| virustotal:", pos)
-                  if vt >= 0:
-                      summary = line[vt + len("| virustotal:"):].strip().lstrip("# \\t").strip()
-                      if summary:
-                          cleaned.append((prefix + " " if prefix else "") + "# " + summary)
-                      elif prefix:
-                          cleaned.append(prefix)
-                  elif prefix:
-                      cleaned.append(prefix)
-              if removed == 0:
-                  raise SystemExit("No source annotations found; refusing to publish unsanitized preview.")
-              if any("# sources:" in line.lower() for line in cleaned):
-                  raise SystemExit("Source names remain; refusing to publish preview.")
+                  # Keep only lines beginning with a valid-looking IPv4 address.
+                  match = re.match(r"^(\\d{1,3}(?:\\.\\d{1,3}){3})(.*)$", line)
+                  if not match:
+                      continue
+                  ip, tail = match.groups()
+                  # Extract only the VirusTotal summary if source labels are present.
+                  low = tail.lower()
+                  vt = low.find("| virustotal:")
+                  if "# sources:" in low:
+                      if vt >= 0:
+                          tail = " # " + tail[vt + len("| virustotal:"):].strip().lstrip("# ").strip()
+                      else:
+                          tail = ""
+                  tail = re.sub(r"\\s+", " ", tail).strip()
+                  if tail and not tail.startswith("#"):
+                      tail = "# " + tail.lstrip("|; ")
+                  cleaned.append(ip + ((" " + tail) if tail else ""))
+              if not cleaned:
+                  raise SystemExit("Sanitization produced no valid IPv4 entries; refusing to publish preview.")
+              if any("# sources:" in line.lower() or "| virustotal:" in line.lower() for line in cleaned):
+                  raise SystemExit("Source labels remain; refusing to publish preview.")
               preview.write_text("\\n".join(cleaned) + "\\n", encoding="utf-8")
-              print(f"Removed source names from {removed} public preview annotations.")
-
+              print(f"Normalized public preview to {len(cleaned)} IPv4 entries without source labels.")
           status = json.loads(Path("release-status.json").read_text())
           state = status.get("status")
 
