@@ -68,7 +68,7 @@
     <div class="grid" style="margin-bottom:0">
       <article class="card"><div class="label">Validation and evidence workflow</div><div class="value" style="font-size:1.25rem">Operational</div><p>Source ingestion, IPv4 validation, retained reputation evidence, assessment reporting and release checks</p></article>
       <article class="card"><div class="label">Published IP indicators</div><div class="value" id="research-ip-count">—</div><p>Matches the latest approved public release</p></article>
-      <article class="card"><div class="label">Cross-checked by Soundwave</div><div class="value" id="crosschecked-count">—</div><p id="crosschecked-note">Completed reputation lookups in the latest batch</p></article>
+      <article class="card"><div class="label">Cross-checked by Soundwave</div><div class="value" id="crosschecked-count">—</div></article>
 <article class="card"><div class="label">Release approach</div><div class="value" style="font-size:1.25rem">Evidence-led review</div><p>Source indicators are validated and cross-checked against available external reputation intelligence; assessment and publication decisions remain separate</p></article>
     </div>
   </section>
@@ -132,7 +132,6 @@
       if (researchResponse.ok) {
         const research = await researchResponse.json();
         document.getElementById("crosschecked-count").textContent = format(research.completed_lookups);
-        document.getElementById("crosschecked-note").textContent = research.status_note || "Completed reputation lookups in the latest batch; not a publication approval.";
       }
     } catch (_) { /* Keep research metrics unavailable if the status file cannot be read. */ }
   } catch (_) {
