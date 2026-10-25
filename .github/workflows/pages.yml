@@ -53,6 +53,36 @@ jobs:
           import shutil
           from pathlib import Path
 
+          # Sanitize only the public copy; keep source names in the private build input.
+          preview = Path("_site/shockwave-annotated-preview.txt")
+          if preview.is_file():
+              lines = preview.read_text(encoding="utf-8").splitlines()
+              cleaned = []
+              removed = 0
+              for line in lines:
+                  low = line.lower()
+                  pos = low.find("# sources:")
+                  if pos < 0:
+                      cleaned.append(line)
+                      continue
+                  removed += 1
+                  prefix = line[:pos].rstrip()
+                  vt = low.find("| virustotal:", pos)
+                  if vt >= 0:
+                      summary = line[vt + len("| virustotal:"):].strip().lstrip("# \\t").strip()
+                      if summary:
+                          cleaned.append((prefix + " " if prefix else "") + "# " + summary)
+                      elif prefix:
+                          cleaned.append(prefix)
+                  elif prefix:
+                      cleaned.append(prefix)
+              if removed == 0:
+                  raise SystemExit("No source annotations found; refusing to publish unsanitized preview.")
+              if any("# sources:" in line.lower() for line in cleaned):
+                  raise SystemExit("Source names remain; refusing to publish preview.")
+              preview.write_text("\\n".join(cleaned) + "\\n", encoding="utf-8")
+              print(f"Removed source names from {removed} public preview annotations.")
+
           status = json.loads(Path("release-status.json").read_text())
           state = status.get("status")
 
