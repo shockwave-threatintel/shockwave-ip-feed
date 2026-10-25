@@ -1,11 +1,11 @@
 {
-  "status": "published",
-  "release_version": "1.2.0",
-  "published_at": "2026-10-24T14:34:24+00:00",
-  "ip_count": 71875,
-  "added_since_previous": 37322,
-  "removed_since_previous": 15554,
-  "validation_summary": "Unique globally routable IPv4 addresses; syntax, uniqueness and inline annotation format validated. Source-feed membership and VirusTotal classifications are evidence, not independent confirmation that every address is currently malicious. Review before enforcement.",
+  "added_since_previous": 9875,
+  "feed_sha256": "b86bbd1388f31f9a6ddbb9f6e47730c7f0d537655db7b5c64c195be490629284",
   "feed_url": "https://shockwave-threatintel.github.io/shockwave-ip-feed/shockwave.txt",
-  "feed_sha256": "0c64c117272bcf65001c131133ee25ae657824243bcdec68a9cf1124e0302eb3"
+  "ip_count": 70041,
+  "published_at": "2026-10-25T16:45:39+00:00",
+  "release_version": "1.3.0",
+  "removed_since_previous": 11709,
+  "status": "published",
+  "validation_summary": "Unique globally routable IPv4 addresses; one IPv4 address per line; syntax, uniqueness and public-address checks passed. Source membership and provider classifications are evidence, not independent confirmation that every address is currently malicious. Review before enforcement."
 }
