@@ -67,8 +67,8 @@
     <p>Indicators are cross-checked by Soundwave against external reputation intelligence and reviewed separately from public release decisions.</p>
     <div class="grid" style="margin-bottom:0">
       <article class="card"><div class="label">Validation and evidence workflow</div><div class="value" style="font-size:1.25rem">Operational</div><p>Source ingestion, IPv4 validation, retained reputation evidence, assessment reporting and release checks</p></article>
-      <article class="card"><div class="label">Published IP indicators</div><div class="value">71,875</div><p>Unique public IPv4 indicators in this release</p></article>
-      <article class="card"><div class="label">Cross checked by Soundwave</div><div class="value">100</div></article>
+      <article class="card"><div class="label">Published IP indicators</div><div class="value" id="research-ip-count">—</div><p>Matches the latest approved public release</p></article>
+      <article class="card"><div class="label">Cross-checked by Soundwave</div><div class="value" id="crosschecked-count">—</div><p id="crosschecked-note">Completed reputation lookups in the latest batch</p></article>
 <article class="card"><div class="label">Release approach</div><div class="value" style="font-size:1.25rem">Evidence-led review</div><p>Source indicators are validated and cross-checked against available external reputation intelligence; assessment and publication decisions remain separate</p></article>
     </div>
   </section>
@@ -116,6 +116,7 @@
     document.getElementById("ip-count").textContent = format(data.ip_count);
     document.getElementById("added-count").textContent = format(data.added_since_previous);
     document.getElementById("removed-count").textContent = format(data.removed_since_previous);
+    document.getElementById("research-ip-count").textContent = format(data.ip_count);
     document.getElementById("release-time").textContent = data.published_at ? "Published: " + data.published_at : "Publication time not supplied.";
     document.getElementById("validation-state").textContent = "Validation: " + (data.validation_summary || "Approved release recorded.");
     if (typeof data.feed_url === "string" && data.feed_url.startsWith("https://")) {
@@ -126,6 +127,14 @@
       document.getElementById("feed-link").replaceChildren(link);
     }
     document.getElementById("status-note").textContent = "Statistics reflect the latest approved public release.";
+    try {
+      const researchResponse = await fetch("./research-status.json", { cache: "no-store" });
+      if (researchResponse.ok) {
+        const research = await researchResponse.json();
+        document.getElementById("crosschecked-count").textContent = format(research.completed_lookups);
+        document.getElementById("crosschecked-note").textContent = research.status_note || "Completed reputation lookups in the latest batch; not a publication approval.";
+      }
+    } catch (_) { /* Keep research metrics unavailable if the status file cannot be read. */ }
   } catch (_) {
     // Keep the safe, unpublished default if release status is unavailable.
   }
